@@ -15,6 +15,7 @@ dbConnect();
 app.use("/task", taskRoute);
 
 app.listen(process.env.PORT, () => {
-  console.log("Server connected successfully"); 
+  console.log("Server Connected Successfully"); 
+
 });
 
