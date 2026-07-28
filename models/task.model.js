@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const taskModel = new mongoose.Schema(
   {
@@ -6,7 +6,7 @@ const taskModel = new mongoose.Schema(
       type: String,
       required: true,
     },
-    
+
     isActive: {
       type: Boolean,
       default: true,
@@ -15,8 +15,5 @@ const taskModel = new mongoose.Schema(
   { timestamps: true }
 );
 
-
-
-
-const task = mongoose.model("TaskModel", taskModel);
+const task = mongoose.model('TaskModel', taskModel);
 export default task;

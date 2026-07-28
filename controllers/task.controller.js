@@ -10,15 +10,12 @@ export const createTask = async (req, res) => {
 
     const task = await newTask.save();
 
-    console.log("TASK:", task);
-
     res.status(201).json({
       success: true,
       message: "Task created successfully.",
       data: task,
     });
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       success: false,
       message: error.message,
@@ -36,7 +33,6 @@ export const getAllTask = async (req, res) => {
       data: tasks,
     });
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       success: false,
       message: error.message,
@@ -60,7 +56,6 @@ export const getTaskById = async (req, res) => {
       data: task,
     });
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       success: false,
       message: error.message,
@@ -72,14 +67,7 @@ export const updateTask = async (req, res) => {
   try {
     const { name } = req.body;
 
-    const updatedTask = await Task.findByIdAndUpdate(
-      req.params.id,
-      { name },
-      {
-        new: true,
-        runValidators: true,
-      }
-    );
+    const updatedTask = await Task.findByIdAndUpdate(req.params.id, { name });
 
     if (!updatedTask) {
       return res.status(404).json({
@@ -94,7 +82,6 @@ export const updateTask = async (req, res) => {
       data: updatedTask,
     });
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       success: false,
       message: error.message,
@@ -119,7 +106,6 @@ export const deleteTask = async (req, res) => {
       data: deletedTask,
     });
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       success: false,
       message: error.message,
